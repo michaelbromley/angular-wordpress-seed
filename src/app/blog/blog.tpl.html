@@ -1,0 +1,44 @@
+<h1 dir-terminal-type start-typing="vm.loaded"
+    remove-caret="0"
+    duration="500"
+    force-caret class="page-header"
+    on-completion="showContent = true">Blog <small>{{ vm.subtitle }}</small>
+</h1>
+
+<div class="pure-g page-content" ng-show="showContent">
+    <div class="pure-u-1">
+
+        <div class="search-container">
+            <revealing-search-input search-callback="vm.search(term)"></revealing-search-input>
+        </div>
+
+        <ul class="no-bullet post-list">
+            <li dir-paginate="post in vm.posts | itemsPerPage: 10" class="post-list-row">
+                <span class="post-list-meta">
+                    <div class="date">
+                        {{ post.date | date:'dd MMM yyyy' }}
+                    </div>
+                </span>
+                <div class="post-list-entry">
+                    <h2><a ui-sref="post({ id: post.ID, title: post.slug })" class="post-list-title">{{ post.title | decodeHtmlCodes  }}</a></h2>
+
+                    <ul class="tags">
+                        <li class="tag-icon">
+                            <i class="icon-tags"></i>
+                        </li>
+                        <li ng-repeat="tag in post.terms.post_tag">
+                            <a ui-sref="postsByTag({ tag: tag.slug })">{{ tag.name }}</a>
+                        </li>
+                    </ul>
+
+                    <div class="post-list-excerpt" ng-bind-html="post.excerpt">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="list-pagination">
+            <dir-pagination-controls template-url="common/directives/pagination/dirPagination.tpl.html" on-page-change="vm.scrollToTop()" direction-links="false">
+            </dir-pagination-controls>
+        </div>
+    </div>
+</div>

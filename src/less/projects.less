@@ -1,0 +1,39 @@
+@import "vars";
+
+.project-container {
+  padding-bottom: 60px;
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 40px;
+  .image-container {
+    box-shadow: @box-shadow;
+  }
+  .description-container {
+    padding: 0 20px;
+  }
+  h2 {
+    margin-top: 6px;
+  }
+
+  ul.project-links {
+    list-style-type: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      a {
+        color: white;
+        background: @colour-a-link;
+      }
+    }
+  }
+
+  transition: opacity 0.5s;
+  &.ng-enter {
+    opacity:0;
+  }
+  &.ng-enter-stagger {
+    transition-delay: 0.1s;
+  }
+  &.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+}

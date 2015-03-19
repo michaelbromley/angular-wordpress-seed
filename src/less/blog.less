@@ -1,0 +1,223 @@
+@import "vars";
+
+.pagination {
+  list-style-type: none;
+  margin-bottom: 30px;
+  li {
+    display: inline-block;
+    font-size: 28px;
+    font-family: @console-font;
+  }
+
+  a {
+    padding: 6px 20px;
+    &:hover {
+      text-decoration: none;
+    }
+    &.active {
+      border-bottom: 3px solid @colour-a-link;
+    }
+  }
+}
+
+.search-container {
+  position: absolute;
+  top: 16px;
+  right: 30px;
+  width: 300px;
+  text-align: right;
+  font-size: 26px;
+  font-family: @console-font;
+  @media (min-width: 48em) {
+    font-size: 32px;
+    top: 29px;
+  }
+  .dollar {
+    background: @colour-main-view-bg;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    color: #999;
+  }
+  input {
+    .console-input();
+    margin-left: 22px;
+  }
+  button {
+    background: none;
+    border: none;
+    padding: 20px 0;
+    &:focus {
+      outline: none;
+    }
+  }
+  // animation stuff
+  .search-input {
+    padding: 20px 0;
+    display: inline-block;
+    position: absolute;
+    right: 32px;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.4s;
+    &.display {
+      width: 250px;
+    }
+  }
+
+  transition: opacity 1.5s;
+  opacity: 1;
+  &.ng-hide {
+    opacity: 0;
+  }
+  &.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+  }
+}
+
+.post-list {
+  position: relative;
+}
+
+.post-list-row {
+  transition: opacity 0.5s;
+  &.ng-enter {
+    opacity:0;
+  }
+  &.ng-enter-stagger {
+    transition-delay: 0.1s;
+  }
+  &.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+}
+
+.post-list-entry {
+  padding-top: 12px;
+  @media (min-width: 48em) {
+    padding-left: 175px;
+    padding-top: 0;
+  }
+  display: block;
+  padding-bottom: 20px;
+
+  h2 {
+    margin-bottom: 0;
+    line-height: 1em;
+  }
+
+  p {
+    margin-top: 5px;
+    color: @colour-text-deemphasize;
+  }
+}
+
+.date {
+  font-family: @console-font;
+  font-size: 1.2em;
+  @media (min-width: 48em) {
+    font-size: 1.5em;
+  }
+  color: #999;
+  margin-top: 3px;
+}
+
+ul.tags {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li:nth-child(1) {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  li {
+    font-family: @copy-font;
+    color: #777;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 18px;
+    padding: 0 3px;
+    margin: 0 3px;
+    text-decoration: underline;
+  }
+  .tag-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+.post-list-title {
+}
+
+.post-list-excerpt {
+}
+
+.post-list-meta {
+  position: absolute;
+  left: 0;
+}
+
+
+.list-pagination {
+  text-align: center;
+}
+
+.post-meta {
+  margin-top: -20px;
+}
+
+.post-body {
+  transition: opacity 0.2s 1s;
+  max-width: 800px;
+  margin: 0 auto;
+  &.ng-hide {
+    opacity:0;
+  }
+  h2, h3 {
+    margin-top: 50px;
+  }
+  p, li {
+    color: @colour-text-content;
+    @media (min-width: 48em) {
+      font-size: 1.2em;
+    }
+  }
+  & > p:first-child {
+    font-size: 1.2em;
+    @media (min-width: 48em) {
+      font-size: 1.4em;
+    }
+  }
+
+  pre {
+    white-space: pre;
+    word-wrap: normal
+  }
+
+  blockquote {
+    @media (max-width: 48em) {
+      margin-left: 10px;
+    }
+  }
+
+  .permalink {
+    cursor: pointer;
+    &:hover {
+      &:before {
+        content: '¶';
+        width: 24px;
+        margin-left: -24px;
+        display: inline-block;
+        color: @colour-text-deemphasize;
+      }
+    }
+  }
+}
+
+.comments-container {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px dashed #ccc;
+}

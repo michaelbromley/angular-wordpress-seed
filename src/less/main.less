@@ -1,0 +1,136 @@
+@import "vars";
+@import "homeMenu";
+@import "about";
+@import "blog";
+@import "projects";
+@import "contact";
+@import "directives";
+@import "hljs";
+@import "wp";
+@import "icons";
+
+html {
+  background-color: #eee;
+
+  &.force-scrollbar {
+    // used to force the appearance of a vertical scrollbar to
+    // prevent content jumping to the left when the scrollbar appears
+    overflow-y: scroll;
+  }
+}
+
+.mobile-menu-button {
+  font-size: 32px;
+  position: fixed;
+  z-index: 50;
+  left: 8px;
+  top: 30px;
+  @media (min-width: 48em) {
+    display: none;
+  }
+}
+
+.main-view {
+  background: @colour-main-view-bg;
+  overflow-x: hidden;
+  @media (min-width: 48em) {
+    min-height: 100vh;
+    margin-left: 25%;
+    width: 75%;
+  }
+  @media screen and (min-width: 80em) {
+    margin-left: 20%;
+    width: 80%;
+  }
+}
+
+.content {
+  margin: auto;
+  max-width: 1024px;
+  padding: 10px 50px;
+  position: relative;
+
+  font-size: 0.85em;
+  @media (min-width: 48em) {
+    font-size: 1em;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @console-font;
+  font-weight: normal;
+}
+
+h1 {
+  @media (min-width: 48em) {
+    font-size: 3em;
+  }
+}
+
+h2 {
+  @media (min-width: 48em) {
+    font-size: 2em;
+  }
+}
+
+h3 {
+  @media (min-width: 48em) {
+    font-size: 1.6em;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code {
+  border: 1px solid #dfdfdf;
+  padding: 1px 3px;
+  background-color: #f0f0f0;
+}
+
+
+p, li {
+  line-height: 1.5em;
+  font-family: @copy-font;
+}
+
+blockquote {
+  border-left: 3px solid #ddd;
+  padding-left: 10px;
+}
+
+.no-bullet {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: @colour-a-link;
+}
+a:hover {
+  color: @colour-a-hover;
+}
+
+.page-header {
+  min-height: 50px;
+}
+
+.page-content {
+  animation: fadeIn 0.6s;
+}
+
+p.lead {
+  font-size: 24px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

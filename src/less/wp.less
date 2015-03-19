@@ -1,0 +1,46 @@
+/**
+ * Styles for Wordpress-specific classes and elements
+ */
+
+.wp-caption {
+  border: 1px solid #c2c2c2;
+  max-width: 96%; /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  margin: 10px;
+  text-align: center;
+  background-color: #e9e9e9;
+
+  &.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+  color: #666;
+  font-style: italic;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px;
+}

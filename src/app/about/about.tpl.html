@@ -1,0 +1,37 @@
+<h1 dir-terminal-type
+    remove-caret="0"
+    duration="500"
+    on-completion="showContent = true">About Me</h1>
+
+<div class="pure-g page-content" ng-show="showContent">
+    <div class="pure-u-1 pure-u-md-1-2">
+        <p class="lead">
+            Hi! I'm am a software developer originally from Manchester, England and now based in Vienna, Austria.
+        </p>
+        <p>I mostly do front-end web development and specialize in JavaScript in general and AngularJS in particular.</p>
+        <p>I've been making computers do things since I was in my teens,
+            <a ui-sref="post({ id: 65, title: 'confessions-of-an-intermediate-programmer' })">with varying degrees of success</a>.
+        </p>
+        <p>By day I work on building business and e-commerce applications.</p>
+        <p>In my free time I like to keep myself busy exploring more exciting aspects of web technologies, such as canvas,
+            animations and the web-audio API. You can see the result of some of my experimentation on the
+        <a ui-sref="projects">projects page</a>.</p>
+        <p>
+            If you'd like to get in touch, use the <a ui-sref="contact">contact form</a> or, for a faster but possibly less thoughtful response,
+            <a href="https://twitter.com/michlbrmly">hit me up on twitter</a>.
+        </p>
+        <h2>About this website</h2>
+        <p>This is a place where I record my thoughts and discoveries which are more or less related to programming. I tend to
+        prefer long-form articles, because I like the sound of my own fingers tapping keys.</p>
+        <p>This website was built with <a href="https://angularjs.org/" target="_blank">AngularJS</a>, with
+            <a href="https://wordpress.org/" target="_blank">WordPress</a> and <a href="http://wp-api.org/" target="_blank">WP-API</a> in the back providing the content.
+            <a ui-sref="post({ id: 228, title: 'experiences-building-a-website-with-angularjs-wp-api-wordpress-api' })">Here is an article I wrote</a> about how I put it together.
+        </p>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2 portrait">
+        <div class="portrait-container">
+            <img src="assets/images/avatar-02.gif" class="me" title="me">
+            <div class="credit">Image rendered with <a href="https://github.com/michaelbromley/chromata" target="_blank">Chromata</a></div>
+        </div>
+    </div>
+</div>

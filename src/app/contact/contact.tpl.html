@@ -1,0 +1,58 @@
+<div class="pure-g">
+    <div class="pure-u">
+        <h1 dir-terminal-type remove-caret="0" duration="500" on-completion="vm.titleDone = true">Get in touch</h1>
+
+        <form name="emailForm" class="email-form" autocomplete="off" ng-submit="vm.emailFormSubmit()" ng-class="{ hidden: vm.success || vm.error }">
+
+            <p dir-terminal-type start-typing="vm.titleDone" remove-caret="0" on-completion="vm.showEmailInput = true">
+                To contact me by email, please type your email address and press enter:</p>
+
+            <ng-form name="emailAddressForm" ng-show="vm.showEmailInput">
+                <div class="form-row">
+                    <span class="dollar">$</span>
+                    <input type="email"
+                           name="email"
+                           required=""
+                           ng-model="vm.emailAddress"
+                           focus-on="vm.showEmailInput"
+                           blur-on="vm.emailFilledOut"
+                           ng-keypress="emailAddressForm.$valid ? vm.emailAddressSubmit($event) : false"
+                            >
+                </div>
+            </ng-form>
+
+            <p dir-terminal-type start-typing="vm.emailFilledOut" on-completion="vm.showMessageInput = true" remove-caret="0">
+                Now type your message:
+            </p>
+
+            <ng-form name="messageForm" ng-show="vm.showMessageInput">
+                <div class="form-row">
+                    <span class="dollar">$</span>
+                    <textarea name="message"
+                              required=""
+                              ng-model="vm.message"
+                              focus-on="vm.showMessageInput"
+                              ng-keypress="emailAddressForm.$valid ? vm.emailAddressSubmit($event) : false"
+                            ></textarea>
+                </div>
+
+                <button class="send-email" ng-disabled="emailForm.$invalid || vm.sending">
+                    Send
+                </button>
+            </ng-form>
+
+            <p dir-terminal-type start-typing="vm.sending" duration="5000" ng-show="vm.sending">
+                Sending..........................
+            </p>
+        </form>
+
+        <h3 dir-terminal-type start-typing="vm.showAck" remove-caret="0" force-caret ng-show="vm.success">
+            Thanks for the message! I'll get back to you as soon as I can.
+        </h3>
+
+        <h3 dir-terminal-type start-typing="vm.showAck" remove-caret="0" force-caret ng-show="vm.error" >
+            Oh no! There was an error. Why don't you try contacting me through
+            <a href="https://twitter.com/michlbrmly">Twitter</a> instead?
+        </h3>
+    </div>
+</div>

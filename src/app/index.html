@@ -1,0 +1,67 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en" ng-app="app" ng-class="{ 'force-scrollbar' : !isHomePage }"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en" ng-app="app" ng-class="{ 'force-scrollbar' : !isHomePage }"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en" ng-app="app" ng-class="{ 'force-scrollbar' : !isHomePage }"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ng-app="app" ng-class="{ 'force-scrollbar' : !isHomePage }"> <!--<![endif]-->
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <base href="%%BASE_PATH%%">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- metadata -->
+    <title ng-bind="meta.title">Michael Bromley: Web Developer</title>
+    <meta name="description" content="The personal website of Michael Bromley, containing my articles and essays on web development as well as my open-source projects." ng-if="false">
+    <meta name="description" content="{{ meta.description | stripHtmlTags }}">
+    <meta name="author" content="Michael Bromley">
+    <!-- Twitter summary card metadata. One day this might be crawled... -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:site" content="@michlbrmly" />
+    <meta property="twitter:title" content="{{ meta.title }}" />
+    <meta property="twitter:description" content="{{ meta.description | stripHtmlTags }}" />
+    <meta property="twitter:image" content="{{ meta.image }}" />
+    <meta property="twitter:url" content="{{ meta.url }}" />
+    <!-- open graph metadata. One day this might be crawled... -->
+    <meta property="og:title" content="{{ meta.title }}" />
+    <meta property="og:site_name " content="Michael Bromley" />
+    <meta property="og:url " content="{{ meta.url }}" />
+    <meta property="og:description" content="{{ meta.description | stripHtmlTags }}" />
+    <meta property="og:image" content="{{ meta.image }}" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+</head>
+<body ng-controller="AppController as vm">
+
+<div class="mobile-menu-button" ng-hide="vm.isHomePage">
+    <a href="#" ng-click="vm.toggleMobileMenu($event)">
+        <i class="icon-menu" ng-hide="vm.showMobileMenu"></i>
+        <i class="icon-close" ng-show="vm.showMobileMenu"></i>
+    </a>
+</div>
+
+<div class="home-menu-view" ng-class="{ contracted: vm.isHomePage === false, 'show-mobile-menu': vm.showMobileMenu }">
+    <div ng-include="'homeMenu/homeMenu.tpl.html'"></div>
+</div>
+
+<div class="main-view">
+    <div class="content">
+        <div ui-view="main"></div>
+    </div>
+</div>
+
+<!-- inject:js -->
+<!-- endinject -->
+
+<script>
+    // Google Analytics code here
+</script>
+</body>
+</html>

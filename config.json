@@ -1,0 +1,15 @@
+{
+  "PATHS": {
+    "build": {
+      "siteUrl": "http://localhost/michaelbromley-v2/build/",
+      "basePath": "/michaelbromley-v2/build/",
+      "apiUrl": "http://localhost/michaelbromley/blog/wp-json/"
+    },
+    "dist": {
+      "siteUrl": "http://www.michaelbromley.co.uk/",
+      "basePath": "/",
+      "apiUrl": "http://www.michaelbromley.co.uk/api/wp-json/"
+    }
+  },
+  "EMAIL_ADDRESS" : "me@mydomain.com"
+}

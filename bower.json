@@ -1,0 +1,28 @@
+{
+  "name": "angular-wordpress-seed",
+  "version": "0.0.0",
+  "authors": [
+    "Michael Bromley <michael@michaelbromley.co.uk>"
+  ],
+  "description": "An example Angular blog app for use with the Wordpress REST API.",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "pure": "~0.5.0",
+    "angular": "~1.3.14",
+    "angular-ui-router": "~0.2.13",
+    "angular-utils-pagination": "~0.2.4",
+    "angular-animate": "~1.3.14"
+  }
+}

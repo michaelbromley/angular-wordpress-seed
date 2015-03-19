@@ -1,0 +1,19 @@
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force www (http://stackoverflow.com/a/4958847/772859)
+    RewriteCond %{HTTP_HOST} !^localhost$
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteCond %{HTTPS}s ^on(s)|
+    RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # allow social media crawlers to work by redirecting them to a server-rendered static version on the page
+    RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet|Googlebot|redditbot|bingbot)
+    RewriteRule blog/(\d*)/.*$ %%SITE_URL%%static-page.php?id=$1 [P]
+
+    # Required to allow direct-linking of pages so they can be processed by Angular
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.html [L]
+</ifModule>

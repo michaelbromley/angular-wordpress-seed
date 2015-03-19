@@ -1,0 +1,58 @@
+@import "vars";
+
+.email-form {
+  font-size: 20px;
+  max-height: 700px;
+  overflow: hidden;
+  transition: max-height 0.4s;
+
+  p {
+    font-family: @console-font;
+  }
+  .form-row {
+    position: relative;
+  }
+  .dollar {
+    background: @colour-main-view-bg;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    color: #666;
+  }
+  input {
+    .console-input();
+    width: 90%;
+    margin-left: 20px;
+    border-bottom: none;
+    background: lighten(@colour-main-view-bg, 3%);
+    &:focus {
+      outline: none;
+      border-bottom: none;
+    }
+  }
+  textarea {
+    .console-input();
+    height: 300px;
+    margin-left: 20px;
+    border-bottom: none;
+    background: lighten(@colour-main-view-bg, 3%);
+    &:focus {
+      outline: none;
+      border-bottom: none;
+    }
+  }
+
+  .send-email {
+    display: block;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #666;
+    padding: 20px;
+    margin: 20px auto;
+    font-family: @console-font;
+  }
+
+  &.hidden {
+    max-height: 0;
+  }
+}
