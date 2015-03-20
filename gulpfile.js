@@ -16,7 +16,6 @@ var Q= require('q'),
     wrap = require('gulp-wrap'),
     templateCache = require('gulp-angular-templatecache'),
     replace = require('gulp-replace'),
-    debug = require('gulp-debug'),
     livereload = require('gulp-livereload');
 
 /////////////////////
@@ -24,7 +23,6 @@ var Q= require('q'),
 /////////////////////
 var config = require('./config.json'),
     PATHS = config.PATHS;
-
 
 ////////////
 // Constants
@@ -51,8 +49,7 @@ function clean(target) {
     gulp.src(target)
         .pipe(rimraf())
         .on('error', log)
-        .on('end', deferred.resolve)
-        .pipe(debug());
+        .on('finish', deferred.resolve);
 
     return deferred.promise;
 }
@@ -86,7 +83,7 @@ gulp.task('scripts', function() {
             .pipe(rename({ suffix: '.min'}))
             // write to dist dir
             .pipe(gulp.dest('dist/scripts/'))
-            .on('end', deferred.resolve)
+            .on('finish', deferred.resolve)
             .pipe(livereload({ auto: false }));
     });
 
@@ -105,7 +102,7 @@ gulp.task('vendor-scripts', function() {
             .pipe(uglify())
             .pipe(rename({ suffix: '.min'}))
             .pipe(gulp.dest('dist/scripts/'))
-            .on('end', deferred.resolve);
+            .on('finish', deferred.resolve);
     });
 
     return deferred.promise;
@@ -128,7 +125,7 @@ gulp.task('styles', function() {
             .pipe(concat('style.min.css'))
             .pipe(cssmin())
             .pipe(gulp.dest('dist/styles'))
-            .on('end', deferred.resolve)
+            .on('finish', deferred.resolve)
             .pipe(livereload({ auto: false }));
     });
 
@@ -140,13 +137,14 @@ gulp.task('templates', function() {
 
     clean(['./build/scripts/templates.js']).then(function() {
         log('compiling templates');
-        return gulp.src('./src/app/**/*.tpl.html', './src/common/**/*.tpl.html')
+        return gulp.src('./src/app/**/*.tpl.html')
             .pipe(templateCache('templates.js', { module: 'app'}))
             .pipe(gulp.dest('build/scripts/'))
             .pipe(uglify())
             .pipe(rename({ suffix: '.min'}))
             .pipe(gulp.dest('dist/scripts/'))
-            .on('end', deferred.resolve)
+            .on('finish', deferred.resolve)
+            .on('error', log)
             .pipe(livereload({ auto: false }));
     });
 
@@ -183,8 +181,6 @@ gulp.task('static-assets', function() {
 
         // other detritus
         detritus =  gulp.src([
-                './src/app/google*.html',
-                './src/app/BingSiteAuth.xml',
                 './src/app/favicon.ico',
                 './src/app/robots.txt'
             ])
@@ -192,7 +188,7 @@ gulp.task('static-assets', function() {
             .pipe(gulp.dest('dist'));
 
         merge(assets, htaccess, staticPage, detritus)
-            .on('end', deferred.resolve);
+            .on('finish', deferred.resolve);
     });
     return deferred.promise;
 });
@@ -213,14 +209,16 @@ gulp.task('static-page-inject', ['styles', 'static-assets'], function() {
     log('injecting css into static-page.php');
 
     merge(build, dist)
-        .on('end', deferred.resolve);
+        .on('finish', deferred.resolve);
 
     return deferred.promise;
 });
 
-gulp.task('index', ['scripts', 'vendor-scripts', 'styles', 'templates', 'static-assets', 'static-page-inject'], function index() {
-    buildIndex('build');
-    buildIndex('dist');
+gulp.task('index', ['scripts', 'vendor-scripts', 'styles', 'templates', 'static-assets', 'static-page-inject'], function() {
+    var build = buildIndex('build');
+    var dist = buildIndex('dist');
+
+    return merge(build, dist);
 });
 
 function buildIndex(path) {
@@ -243,7 +241,7 @@ function buildIndex(path) {
 
     sources = gulp.src(files, { cwd: path });
 
-    gulp.src('src/app/index.html')
+    return gulp.src('src/app/index.html')
         .pipe(inject(sources, { addRootSlash: false }))
         // set the <base> meta tag
         .pipe(replace(/%%BASE_PATH%%/, PATHS[path].basePath))

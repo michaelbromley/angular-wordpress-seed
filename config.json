@@ -1,14 +1,14 @@
 {
   "PATHS": {
     "build": {
-      "siteUrl": "http://localhost/michaelbromley-v2/build/",
-      "basePath": "/michaelbromley-v2/build/",
+      "siteUrl": "http://localhost/GitHub/angular-wordpress-seed/build/",
+      "basePath": "/GitHub/angular-wordpress-seed/build/",
       "apiUrl": "http://localhost/michaelbromley/blog/wp-json/"
     },
     "dist": {
-      "siteUrl": "http://www.michaelbromley.co.uk/",
+      "siteUrl": "http://www.mysite.com/",
       "basePath": "/",
-      "apiUrl": "http://www.michaelbromley.co.uk/api/wp-json/"
+      "apiUrl": "http://www.mysite.com/api/wp-json/"
     }
   },
   "EMAIL_ADDRESS" : "me@mydomain.com"

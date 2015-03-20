@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'ngAnimate', 'angularUtils.directives.dirPagination', 'angularUtils.directives.dirTerminalType']);
+angular.module('app', ['ui.router', 'ngAnimate', 'angularUtils.directives.dirPagination']);
 
 /**
  *
@@ -10,7 +10,14 @@ angular.module('app', ['ui.router', 'ngAnimate', 'angularUtils.directives.dirPag
 function routesConfig($stateProvider, $locationProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
-            url: "/"
+            url: "/",
+            views: {
+                'main': {
+                    templateUrl: 'home/home.tpl.html',
+                    controller: 'HomeController',
+                    controllerAs: 'vm'
+                }
+            }
         })
         .state('blog', {
             url: "/blog",
@@ -103,7 +110,6 @@ var config = {
 function AppController($rootScope, $window, $location, $timeout, MetadataService) {
     var vm = this;
 
-    vm.isHomePage = true;
     vm.showMobileMenu = false;
 
     vm.toggleMobileMenu = function(e) {
@@ -112,9 +118,7 @@ function AppController($rootScope, $window, $location, $timeout, MetadataService
     };
 
     $rootScope.$on('$stateChangeSuccess', function(e, toState) {
-        vm.isHomePage = toState.name === 'home';
-        $rootScope.activeSection = toState.name;
-        $rootScope.isHomePage = vm.isHomePage;
+        vm.activeSection = toState.name;
         vm.showMobileMenu = false;
     });
 
