@@ -6,6 +6,11 @@ function BlogController($anchorScroll, $stateParams, $state, BlogService, Metada
     vm.loaded = false;
     vm.subtitle = '';
 
+    MetadataService.setMetadata({
+        title: 'Blog',
+        description: 'A collection of articles on some topics.'
+    });
+
     if (typeof $stateParams.tag !== 'undefined') {
         apiCallFunction = BlogService.allPostsByTag($stateParams.tag);
         vm.subtitle = 'tagged with "' + $stateParams.tag + '"';
@@ -15,11 +20,6 @@ function BlogController($anchorScroll, $stateParams, $state, BlogService, Metada
     } else {
         apiCallFunction = BlogService.allPosts();
     }
-
-    MetadataService.setMetadata({
-        title: 'Michael Bromley - Blog',
-        description: 'A collection of articles and essays on Programming and other topics'
-    });
 
     apiCallFunction.then(function(posts) {
         vm.posts = posts;

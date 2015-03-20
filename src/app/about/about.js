@@ -2,8 +2,8 @@ function AboutController(MetadataService) {
     var vm = this;
 
     MetadataService.setMetadata({
-        title: 'Michael Bromley - About Me',
-        description: 'Web developer.'
+        title: 'About This Blog',
+        description: 'Some des.'
     });
 }
 

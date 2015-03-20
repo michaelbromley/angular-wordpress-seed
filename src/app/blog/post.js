@@ -1,4 +1,4 @@
-function PostController($stateParams, $anchorScroll, $timeout, $location, BlogService, MetadataService, CodeHighlighter) {
+function PostController($stateParams, $anchorScroll, $timeout, $location, BlogService, MetadataService) {
     var vm = this;
 
     vm.post = {};
@@ -9,7 +9,6 @@ function PostController($stateParams, $anchorScroll, $timeout, $location, BlogSe
         vm.loaded = true;
         vm.disqusUrl = post.ID + '/' + post.slug;
         vm.postUrl = $location.absUrl();
-        $timeout( CodeHighlighter.highlight, 100);
 
         MetadataService.setMetadata({
             title: post.title,

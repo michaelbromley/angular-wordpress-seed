@@ -59,16 +59,6 @@ function routesConfig($stateProvider, $locationProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('contact', {
-            url: "/contact",
-            views: {
-                'main': {
-                    templateUrl: 'contact/contact.tpl.html',
-                    controller: 'ContactController',
-                    controllerAs: 'vm'
-                }
-            }
-        })
         .state('about', {
             url: "/about",
             views: {

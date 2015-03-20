@@ -1,10 +1,6 @@
-<h1 dir-terminal-type
-    start-typing="vm.loaded"
-    remove-caret="0" force-caret
-    class="page-header"
-    on-completion="showContent = true">{{ vm.post.title }}</h1>
+<h1>{{ vm.post.title }}</h1>
 
-<div class="pure-g page-content" ng-show="showContent">
+<div class="pure-g page-content">
     <div class="pure-u-1">
 
         <div class="post-meta">
@@ -21,6 +17,6 @@
             </ul>
         </div>
 
-        <div class="post-body" ng-bind="vm.post.content"></div>
+        <div class="post-body" ng-bind-html="vm.post.content"></div>
     </div>
 </div>

@@ -72,6 +72,8 @@ gulp.task('scripts', function() {
             // replace the constant values placeholders with the actual data
             .pipe(replace(/%%ROOT_URL%%/, PATHS['build'].basePath))
             .pipe(replace(/%%API_URL%%/, PATHS['build'].apiUrl))
+            .pipe(replace(/%%DEFAULT_TITLE%%/, config['DEFAULT_TITLE']))
+            .pipe(replace(/%%DEFAULT_DESCRIPTION%%/, config['DEFAULT_DESCRIPTION']))
             // write the scripts to the build dir
             .pipe(gulp.dest('build/scripts/app'))
             // replace the build constant values with the dist constants
@@ -181,7 +183,7 @@ gulp.task('static-assets', function() {
 
         // other detritus
         detritus =  gulp.src([
-                './src/app/favicon.ico',
+                './src/app/favicon.png',
                 './src/app/robots.txt'
             ])
             .pipe(gulp.dest('build'))
