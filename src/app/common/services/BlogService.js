@@ -1,3 +1,12 @@
+/**
+ * The BlogService retrieves and processes the json response from WP-API into a form that Angular can use.
+ *
+ * @param $http
+ * @param $sce
+ * @param config
+ * @returns {{allPosts: allPosts, allPostsByTag: allPostsByTag, allPostsBySearchTerm: allPostsBySearchTerm, featuredPosts: featuredPosts, post: post}}
+ * @constructor
+ */
 function BlogService($http, $sce, config) {
 
     function allPosts() {
@@ -18,14 +27,6 @@ function BlogService($http, $sce, config) {
 
     function post(id) {
         return getData('posts/' + id);
-    }
-
-    function allProjects() {
-        return getData('posts?filter[category_name]=project');
-    }
-
-    function featuredProjects() {
-        return getData('posts?filter[category_name]=project%2Bfeatured');
     }
 
     function getData(url) {
@@ -51,18 +52,8 @@ function BlogService($http, $sce, config) {
     function decorateResult(result) {
         result.excerpt = $sce.trustAsHtml(result.excerpt);
         result.date = Date.parse(result.date);
-        result.content = addPermalinkToHeaders(result.content);
         result.content = $sce.trustAsHtml(result.content);
         return result;
-    }
-
-    /**
-     * Add a dirPermalink directive to any headers within the body of the post.
-     * @param content
-     * @returns {XML|string|*|void}
-     */
-    function addPermalinkToHeaders(content) {
-        return content.replace(/(<h[234])([^>]*>)/g, '$1 dir-permalink $2');
     }
 
     return {
@@ -70,9 +61,7 @@ function BlogService($http, $sce, config) {
         allPostsByTag: allPostsByTag,
         allPostsBySearchTerm: allPostsBySearchTerm,
         featuredPosts: featuredPosts,
-        post: post,
-        allProjects: allProjects,
-        featuredProjects: featuredProjects
+        post: post
     };
 }
 

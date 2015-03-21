@@ -1,1 +1,18 @@
-<h1>Home!!!!</h1>
+<div class="pure-g page-content" ng-controller="HomeController as vm">
+    <div class="pure-u-1">
+        <div class="hero-box">
+            <h1>Angular Wordpress Seed</h1>
+            <p>
+                A basic blog site written in AngularJS and designed to consume the WP-API REST service.
+            </p>
+        </div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2">
+        <h2>Featured Posts</h2>
+        <ul class="featured-articles no-bullet">
+            <li ng-repeat="post in vm.featuredPosts">
+                <a ui-sref="post({ id: post.ID, title: post.slug })">{{ post.title }}</a>
+            </li>
+        </ul>
+    </div>
+</div>

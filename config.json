@@ -11,7 +11,6 @@
       "apiUrl": "http://www.mysite.com/api/wp-json/"
     }
   },
-  "EMAIL_ADDRESS" : "me@mydomain.com",
   "DEFAULT_TITLE" : "Angular Wordpress Seed",
   "DEFAULT_DESCRIPTION" : "A basic blog app demonstrating the use of AngularJS with the Wordpress API"
 }

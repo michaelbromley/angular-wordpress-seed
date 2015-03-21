@@ -30,20 +30,16 @@
     font-size: 32px;
     top: 29px;
   }
-  .dollar {
-    background: @colour-main-view-bg;
-    position: absolute;
-    left: 0;
-    z-index: 10;
-    color: #999;
-  }
   input {
-    margin-left: 22px;
+    width: 200px;
   }
   button {
-    background: none;
-    border: none;
-    padding: 20px 0;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 20px;
+    padding-top: 5px;
+    height: 43px;
     &:focus {
       outline: none;
     }
@@ -53,7 +49,7 @@
     padding: 20px 0;
     display: inline-block;
     position: absolute;
-    right: 32px;
+    right: 48px;
     width: 0;
     overflow: hidden;
     transition: width 0.4s;
@@ -188,7 +184,6 @@ ul.tags {
 
   pre {
     white-space: pre;
-    word-wrap: normal
   }
 
   blockquote {

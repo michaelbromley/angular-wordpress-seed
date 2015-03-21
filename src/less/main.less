@@ -1,4 +1,5 @@
 @import "vars";
+@import "home";
 @import "blog";
 @import "wp";
 @import "icons";
@@ -9,7 +10,7 @@
   z-index: 50;
   left: 8px;
   top: 30px;
-  @media (min-width: 48em) {
+  @media (min-width: 35.5em) {
     display: none;
   }
 }
@@ -17,11 +18,26 @@
 .menu-view {
   background-color: darken(@colour-main-view-bg, 30%);
   min-height: 100vh;
+  transform: translateX(-100vw);
+  transition: transform 0.3s;
+  position: fixed;
+  z-index: 2;
+
+  @media (min-width: 35.5em) {
+    transform: none;
+    position: inherit;
+    font-size: 1em;
+  }
+
+  &.show-mobile-menu {
+    transform: none;
+  }
 
   .menu {
     font-size: 2em;
     ul {
       list-style-type: none;
+      padding-left: 60px;
     }
     a {
       transition: all 0.3s;

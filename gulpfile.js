@@ -24,9 +24,6 @@ var Q= require('q'),
 var config = require('./config.json'),
     PATHS = config.PATHS;
 
-////////////
-// Constants
-////////////
 var VENDOR_SCRIPTS = [
     'bower_components/modernizr/modernizr-custom.js',
     'bower_components/angular/angular.js',
@@ -247,11 +244,13 @@ function buildIndex(path) {
         .pipe(inject(sources, { addRootSlash: false }))
         // set the <base> meta tag
         .pipe(replace(/%%BASE_PATH%%/, PATHS[path].basePath))
+        .pipe(replace(/%%DEFAULT_TITLE%%/, config['DEFAULT_TITLE']))
+        .pipe(replace(/%%DEFAULT_DESCRIPTION%%/, config['DEFAULT_DESCRIPTION']))
         .pipe(gulp.dest('./' + path));
 }
 
 
-gulp.task('watch', function() {
+gulp.task('watch', ['index'], function() {
     livereload.listen();
     gulp.watch('src/app/**/*.js', ['scripts']);
     gulp.watch('src/app/**/*.tpl.html', ['templates']);

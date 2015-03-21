@@ -2,10 +2,7 @@
 /**
  * This file creates a static page for crawlers such as Facebook or Twitter bots that cannot evaluate JavaScript.
  *
- * Created by PhpStorm.
- * User: Michael
- * Date: 30/06/14
- * Time: 14:31
+ * For a full explanation see https://github.com/michaelbromley/angular-social-demo
  */
 
 $API_URL = "%%API_URL%%";
@@ -35,7 +32,6 @@ function makePage($data) {
 
         <!-- Twitter summary card metadata -->
         <meta property="twitter:card" content="summary" />
-        <meta property="twitter:site" content="@michlbrmly" />
         <meta property="twitter:title" content="<?php echo $data->title; ?>" />
         <meta property="twitter:description" content="<?php echo strip_tags($data->excerpt); ?>" />
         <meta property="twitter:url" content="<?php echo $pageUrl; ?>" />
@@ -49,7 +45,6 @@ function makePage($data) {
         <meta property="og:title" content="<?php echo $data->title; ?>" />
         <meta property="og:description" content="<?php echo strip_tags($data->excerpt); ?>" />
         <meta property="og:type" content="article" />
-        <meta property="og:site_name" content="My Favourite Albums" />
         <meta property="og:url" content="<?php echo $pageUrl; ?>" />
         <?php if (isset($data->featured_image)) {
             ?>
