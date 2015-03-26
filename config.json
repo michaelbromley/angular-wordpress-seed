@@ -1,14 +1,14 @@
 {
   "PATHS": {
     "build": {
-      "siteUrl": "http://localhost/GitHub/angular-wordpress-seed/build/",
-      "basePath": "/GitHub/angular-wordpress-seed/build/",
-      "apiUrl": "http://localhost/michaelbromley/blog/wp-json/"
+      "siteUrl": "http://localhost/angular-wordpress-seed/build/",
+      "basePath": "/angular-wordpress-seed/build/",
+      "apiUrl": "http://localhost/wordpress/wp-json/"
     },
     "dist": {
-      "siteUrl": "http://www.mysite.com/",
+      "siteUrl": "http://www.example.com/",
       "basePath": "/",
-      "apiUrl": "http://www.mysite.com/api/wp-json/"
+      "apiUrl": "http://www.example.com/api/wp-json/"
     }
   },
   "DEFAULT_TITLE" : "Angular Wordpress Seed",
