@@ -1,6 +1,10 @@
 # angular-wordpress-seed
 
-A bare-bones AngularJS blog app designed to work with the Wordpress JSON REST API.
+A bare-bones AngularJS blog app designed to work with the Wordpress [JSON REST API](http://wp-api.org).
+
+## Demo
+
+http://www.michaelbromley.co.uk/experiments/angular-wordpress-seed/
 
 ## Setting Up Wordpress
 
@@ -20,8 +24,33 @@ posts which are also in the category "featured" will appear on the home page. Th
 4. Navigate to the `/build` directory in your browser to test.
 5. Upload the contents of `/dist` to your production server.
 
-## Features
+## Developing
+
+Here is an outline of the folder structure:
+
+```
+./src
+   |- app               // The Angular app itself.
+   |   |- about         // The various sections are in their
+   |   |- blog          // own folders, and the `common` folder
+   |   |- common        // houses any shared components & services
+   |   |- home
+   |
+   |- assets            // Any static assets such as images and icon fonts.
+   |- less              // All styling for the app. Each section has its own
+                        // .less file, which are imported into the main.less file.
+
+./build                 // dev build created when Gulp is run
+./dist                  // minified, concatenated distribution build created by Gulp.
+```
+
+
+## Extras
 
 * Simple, responsive CSS based on the [Pure CSS framework](http://purecss.io/).
 * A couple of custom directives are included for simple pagination of blog posts and a revealing search input.
 * Built-in support for handling search-engine and social-media crawlers based on [this technique](https://github.com/michaelbromley/angular-social-demo)
+
+## License
+
+MIT
