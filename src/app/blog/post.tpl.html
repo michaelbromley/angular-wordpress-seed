@@ -8,9 +8,6 @@
                 {{ vm.post.date | date:'dd MMM yyyy' }}
             </div>
             <ul class="tags">
-                <li class="tag-icon">
-                    <i class="icon-tags"></i>
-                </li>
                 <li ng-repeat="tag in vm.post.terms.post_tag">
                     <a ui-sref="postsByTag({ tag: tag.slug })">{{ tag.name }}</a>
                 </li>
