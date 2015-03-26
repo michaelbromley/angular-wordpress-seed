@@ -2,7 +2,7 @@ var Q= require('q'),
     gulp = require('gulp'),
     util = require('gulp-util'),
     less = require('gulp-less'),
-    cssmin = require('gulp-cssmin'),
+    minifyCss = require('gulp-minify-css'),
     autoprefixer = require('gulp-autoprefixer'),
     rimraf = require('gulp-rimraf'),
     ngAnnotate = require('gulp-ng-annotate'),
@@ -113,7 +113,7 @@ gulp.task('styles', function() {
 
     clean(['./build/**/*.css', './dist/**/*.css']).then(function() {
         log('building CSS');
-        appStyles =  gulp.src('src/less/main.less')
+        appStyles = gulp.src('src/less/main.less')
             .pipe(less())
             .pipe(autoprefixer());
 
@@ -121,8 +121,8 @@ gulp.task('styles', function() {
 
         merge(vendorStyles, appStyles)
             .pipe(gulp.dest('build/styles'))
+            .pipe(minifyCss( { advanced: false }))
             .pipe(concat('style.min.css'))
-            .pipe(cssmin())
             .pipe(gulp.dest('dist/styles'))
             .on('finish', deferred.resolve)
             .pipe(livereload({ auto: false }));
