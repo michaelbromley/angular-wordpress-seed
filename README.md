@@ -10,7 +10,7 @@ http://www.michaelbromley.co.uk/experiments/angular-wordpress-seed/
 
 1. Download and install Wordpress ([Download link](https://wordpress.org/download/))
 2. Enable pretty permalinks (`Settings -> Permalinks`), select "custom structure" and use the string `/%post_id%/%postname%`.
-3. Install the **JSON REST API (WP-API)** plugin. Easiest way is to use the `Plugins -> Add New` feature of the Wordpress
+3. Install the [**JSON REST API (WP-API)**](https://wordpress.org/plugins/json-rest-api/) plugin. Easiest way is to use the `Plugins -> Add New` feature of the Wordpress
 admin interface. Manual install instructions can be found on the [WP-API repo](https://github.com/WP-API/WP-API#installation).
 4. By default, the [AngularJS service that communicates with Wordpress](src/app/common/services/BlogService.js) will look for posts with a category of "post". Additionally,
 posts which are also in the category "featured" will appear on the home page. These categories will therefore need to be set up.
