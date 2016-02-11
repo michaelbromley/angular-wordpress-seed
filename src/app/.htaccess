@@ -2,6 +2,8 @@
     RewriteEngine On
 
     # Force www (http://stackoverflow.com/a/4958847/772859)
+    # OSX users: Forcing WWW locally with MAMP will cause an error - comment the following
+    # 4 lines out. See https://github.com/michaelbromley/angular-wordpress-seed/issues/9.
     RewriteCond %{HTTP_HOST} !^localhost$
     RewriteCond %{HTTP_HOST} !^www\. [NC]
     RewriteCond %{HTTPS}s ^on(s)|
